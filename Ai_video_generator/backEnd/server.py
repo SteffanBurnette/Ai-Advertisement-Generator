@@ -22,6 +22,7 @@ def get_data():
     return jsonify(data)
 
 
+# Server is running
 if __name__ == "__main__":
     app.run(debug = True)
 
