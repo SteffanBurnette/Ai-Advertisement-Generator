@@ -1,4 +1,4 @@
-from pymongo import MongoClient #Connect to db cluster
+from pymongo import MongoClient #Connect to db cluster in mongo
 import gridfs
 import os 
 from dotenv import load_dotenv
