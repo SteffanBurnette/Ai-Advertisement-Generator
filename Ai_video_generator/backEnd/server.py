@@ -6,14 +6,19 @@ import sys
 sys.path.insert(0, "../Ai_video_generator/backEnd/videoGenblueprint.py") 
 from videoGenblueprint import videoGen_bp
 from fetchVideoBP import fetchVideo
+from auth_routes import auth_bp 
 
 app = Flask(__name__)
 CORS(app, support_credentials = True, origins = ["http://localhost3000"])
 
+#Need to change later:
+app.secret_key = b'Secret'
 
 #Blueprint endpoints
 app.register_blueprint(videoGen_bp, url_prefix = "/videoGen")
 app.register_blueprint(fetchVideo, url_prefix = "/getVideo")
+app.register_blueprint(auth_bp)
+
 
 @app.route("/")
 def basics():
