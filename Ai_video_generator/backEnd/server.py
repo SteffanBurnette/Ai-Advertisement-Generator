@@ -7,6 +7,8 @@ sys.path.insert(0, "../Ai_video_generator/backEnd/videoGenblueprint.py")
 from videoGenblueprint import videoGen_bp
 from fetchVideoBP import fetchVideo
 from auth_routes import auth_bp 
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
 CORS(app, support_credentials = True, origins = ["http://localhost3000"])
@@ -18,6 +20,14 @@ app.secret_key = b'Secret'
 app.register_blueprint(videoGen_bp, url_prefix = "/videoGen")
 app.register_blueprint(fetchVideo, url_prefix = "/getVideo")
 app.register_blueprint(auth_bp)
+
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["100 per day", "50 per hour"],
+    storage_uri="memory://",
+)
+
 
 
 @app.route("/")
