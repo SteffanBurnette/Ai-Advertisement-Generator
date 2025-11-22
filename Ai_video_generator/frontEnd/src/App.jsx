@@ -10,7 +10,6 @@ import toast from 'react-hot-toast'
 const App = () => {
   return (
     <div>
-      <button onClick = {() => toast.success("Congrats")}>Click me</button>
     <Routes>
         <Route path = "/" element = {<LandingPage/>}/>
         <Route path = "/main" element = {<HomePage/>} />
@@ -24,3 +23,6 @@ const App = () => {
 }
 
 export default App
+
+//Example of react-hot-toast
+//<button onClick = {() => toast.success("Congrats")}>Click me</button>
